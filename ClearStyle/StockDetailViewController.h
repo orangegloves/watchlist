@@ -10,4 +10,6 @@
 
 @interface StockDetailViewController : UIViewController
 
+- (id)initWithSymbol:(NSString *)symbol;
+
 @end

@@ -29,6 +29,8 @@
 		0C3709251947532E00280B7D /* StockDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3709211947532E00280B7D /* StockDetailViewController.m */; };
 		0C3709261947532E00280B7D /* StockDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3709221947532E00280B7D /* StockDetailViewController.xib */; };
 		0CE2BE5C18B7DC5100A808E1 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2BE5B18B7DC5100A808E1 /* TableView.m */; };
+		F5C9BCD31947A5B100128536 /* btn_chatter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C9BCD11947A5B100128536 /* btn_chatter.png */; };
+		F5C9BCD41947A5B100128536 /* btn_chatter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C9BCD21947A5B100128536 /* btn_chatter@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		0CE2BE5A18B7DC5100A808E1 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		0CE2BE5B18B7DC5100A808E1 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		0CE2BE5D18B7DCEA00A808E1 /* TableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewDataSource.h; sourceTree = "<group>"; };
+		F5C9BCD11947A5B100128536 /* btn_chatter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_chatter.png; sourceTree = "<group>"; };
+		F5C9BCD21947A5B100128536 /* btn_chatter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_chatter@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,7 @@
 		0C37091B194752FC00280B7D /* stockOverlay */ = {
 			isa = PBXGroup;
 			children = (
+				F5C9BCD01947A5B100128536 /* images */,
 				0C37091C1947532E00280B7D /* Theme.h */,
 				0C37091D1947532E00280B7D /* Theme.m */,
 				0C37091E1947532E00280B7D /* Stock.h */,
@@ -201,6 +206,15 @@
 				0C3709221947532E00280B7D /* StockDetailViewController.xib */,
 			);
 			name = stockOverlay;
+			sourceTree = "<group>";
+		};
+		F5C9BCD01947A5B100128536 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F5C9BCD11947A5B100128536 /* btn_chatter.png */,
+				F5C9BCD21947A5B100128536 /* btn_chatter@2x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +296,8 @@
 				0C3709261947532E00280B7D /* StockDetailViewController.xib in Resources */,
 				0C1B10E218AEA952009FFA3D /* Images.xcassets in Resources */,
 				0C1B10D418AEA952009FFA3D /* InfoPlist.strings in Resources */,
+				F5C9BCD41947A5B100128536 /* btn_chatter@2x.png in Resources */,
+				F5C9BCD31947A5B100128536 /* btn_chatter.png in Resources */,
 				0C1B10DD18AEA952009FFA3D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

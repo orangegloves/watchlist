@@ -11,7 +11,6 @@
 #import "Theme.h"
 
 @interface StockDetailViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *stockSymbolTextField;
 
 @property (strong, nonatomic) IBOutlet UILabel *stockNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *stockExchangeLabel;
@@ -32,31 +31,22 @@
 
 @property Stock *stockData;
 
-- (IBAction)searchStockSymbol:(id)sender;
 - (IBAction)openChatter:(id)sender;
 
 @end
 
 @implementation StockDetailViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+- (id)initWithSymbol:(NSString *)symbol {
+    self = [[StockDetailViewController alloc] init];
+    self.stockData = [[Stock alloc] initWithSymbol:symbol];
     
-    self.stockData = [[Stock alloc] initWithSymbol:@"INTU"];
-    [self displayStockData];
+    return self;
 }
 
-- (IBAction)searchStockSymbol:(id)sender {
-    NSString *symbol = self.stockSymbolTextField.text;
-    if ([symbol isEqualToString:@""]) {
-        symbol = @"INTU";
-    }
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    [self.stockSymbolTextField resignFirstResponder];
-    
-    self.stockData = [[Stock alloc] initWithSymbol:symbol];
     [self displayStockData];
 }
 
@@ -107,16 +97,7 @@
         //NSString *link = [feeds[i] objectForKey: @"link"];
         //NSString *description = [feeds[i] objectForKey: @"description"];
         NSString *pubdate = [feeds[i] objectForKey: @"pubdate"];
-        /*
-        height = [self heightOfCellWithString:title withSuperviewWidth:width withFont:font];
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, y, width, height)];
-        titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        titleLabel.numberOfLines = 0;
-        titleLabel.font = font;
-        titleLabel.textColor = [UIColor colorWithRed:(51.0/255.0) green:(153.0/255.0) blue:(255.0/255.0) alpha:1.0];
-        titleLabel.text = title;
-        [self.stockNewsScrollView addSubview:titleLabel];
-        */
+        
         y = y + height;
         height = [self heightOfCellWithString:title withSuperviewWidth:width withFont:font];
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10.0f, y, width, height)];
@@ -181,28 +162,5 @@
                                                     context:context];
     return labelRect.size.height;
 }
-
-#pragma mark UIWebViewDelegate
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    
-    // report the error inside the webview
-    NSString* errorString = [NSString stringWithFormat:
-                             @"<html><h1>Unable to load webpage. An error occurred:<br>%@</h1></html>", error.localizedDescription];
-    [self.stockNewsWebView loadHTMLString:errorString baseURL:nil];
-}
-
 
 @end
