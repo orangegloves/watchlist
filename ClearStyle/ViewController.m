@@ -18,13 +18,17 @@
 @implementation ViewController {
     // an array of to-do items
     NSMutableArray* _toDoItems;
+    BOOL _isStockShowing;
+    StockDetailViewController* _stockViewController;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// create a dummy to-do list
+    _stockViewController = [[StockDetailViewController alloc] init];
     _toDoItems = [[NSMutableArray alloc] init];
+    
     [_toDoItems addObject:[ToDoItem toDoItemWithCompanyName:@"Intuit" andShortName:@"INTU" andPrice:69.89f andPriceChange:+0.70f]];
     [_toDoItems addObject:[ToDoItem toDoItemWithCompanyName:@"Apple" andShortName:@"APPL" andPrice:550.12f andPriceChange:-45.93f]];
     [_toDoItems addObject:[ToDoItem toDoItemWithCompanyName:@"Umbrella Corp" andShortName:@"ZOMB" andPrice:11.01f andPriceChange:1.24f]];
@@ -44,7 +48,7 @@
     [_toDoItems addObject:[ToDoItem toDoItemWithCompanyName:@"Microsoft Corporation" andShortName:@"MSFT" andPrice:54.12f andPriceChange:0.23f]];
     [_toDoItems addObject:[ToDoItem toDoItemWithCompanyName:@"Nakatomi Trading Corp" andShortName:@"NTC" andPrice:81.37f andPriceChange:0.55f]];
     
-    
+    _isStockShowing = false;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor blackColor];
     [self.tableView registerClassForCells:[TableViewCell class]];
@@ -134,16 +138,26 @@
 }
 -(void)showStock {
     NSLog(@"showingStock!");
-    StockDetailViewController *viewController = [[StockDetailViewController alloc] init];
+    
  //   [self presentViewController:viewController animated:YES completion:nil];
     
 
+    if(_isStockShowing) {
+        
+        
+        [_stockViewController willMoveToParentViewController:nil];
+        [_stockViewController.view removeFromSuperview];
+        [_stockViewController removeFromParentViewController];
+        NSLog(@"removing controller");
+    } else {
     
-    [self addChildViewController:viewController];
-    [self.view addSubview:viewController.view];
-     viewController.view.frame = CGRectInset(self.view.bounds, 60,0);
-    [viewController didMoveToParentViewController:self];
-    
+        [self.view addSubview:_stockViewController.view];
+        _stockViewController.view.frame = CGRectInset(self.view.bounds, 60,0);
+        [_stockViewController didMoveToParentViewController:self];
+        NSLog(@"adding controller");
+        
+    }
+    _isStockShowing = !_isStockShowing;
     
 }
 -(void)toDoItemDeleted:(id)todoItem {
