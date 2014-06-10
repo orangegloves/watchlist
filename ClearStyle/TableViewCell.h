@@ -21,6 +21,10 @@
 @property (nonatomic) UILabel *companyShortName;
 @property (nonatomic) UILabel *priceChange;
 @property (nonatomic) UILabel *price;
+@property (nonatomic) UIView *bgView;
+@property (nonatomic) UIView *upperDividerView;
+@property (nonatomic) UIView *lowerDividerView;
+
 
 
 

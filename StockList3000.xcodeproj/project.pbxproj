@@ -24,6 +24,10 @@
 		0C1B110018AEAC6E009FFA3D /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1B10FF18AEAC6E009FFA3D /* ToDoItem.m */; };
 		0C1B110318AEAEF6009FFA3D /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1B110218AEAEF6009FFA3D /* TableViewCell.m */; };
 		0C1B110518AEAF9F009FFA3D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1B110418AEAF9F009FFA3D /* QuartzCore.framework */; };
+		0C3709231947532E00280B7D /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C37091D1947532E00280B7D /* Theme.m */; };
+		0C3709241947532E00280B7D /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C37091F1947532E00280B7D /* Stock.m */; };
+		0C3709251947532E00280B7D /* StockDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3709211947532E00280B7D /* StockDetailViewController.m */; };
+		0C3709261947532E00280B7D /* StockDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3709221947532E00280B7D /* StockDetailViewController.xib */; };
 		0CE2BE5C18B7DC5100A808E1 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2BE5B18B7DC5100A808E1 /* TableView.m */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +67,13 @@
 		0C1B110218AEAEF6009FFA3D /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		0C1B110418AEAF9F009FFA3D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0C1B110618AEB6D0009FFA3D /* TableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableViewCellDelegate.h; path = ../TableViewCellDelegate.h; sourceTree = "<group>"; };
+		0C37091C1947532E00280B7D /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
+		0C37091D1947532E00280B7D /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
+		0C37091E1947532E00280B7D /* Stock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock.h; sourceTree = "<group>"; };
+		0C37091F1947532E00280B7D /* Stock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock.m; sourceTree = "<group>"; };
+		0C3709201947532E00280B7D /* StockDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockDetailViewController.h; sourceTree = "<group>"; };
+		0C3709211947532E00280B7D /* StockDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockDetailViewController.m; sourceTree = "<group>"; };
+		0C3709221947532E00280B7D /* StockDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockDetailViewController.xib; sourceTree = "<group>"; };
 		0CE2BE5A18B7DC5100A808E1 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		0CE2BE5B18B7DC5100A808E1 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		0CE2BE5D18B7DCEA00A808E1 /* TableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewDataSource.h; sourceTree = "<group>"; };
@@ -96,8 +107,8 @@
 		0C1B10BD18AEA952009FFA3D = {
 			isa = PBXGroup;
 			children = (
-				0C1B10CF18AEA952009FFA3D /* ClearStyle */,
-				0C1B10EE18AEA952009FFA3D /* ClearStyleTests */,
+				0C1B10CF18AEA952009FFA3D /* stocklist */,
+				0C1B10EE18AEA952009FFA3D /* stocklistTests */,
 				0C1B10C818AEA952009FFA3D /* Frameworks */,
 				0C1B10C718AEA952009FFA3D /* Products */,
 			);
@@ -124,9 +135,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0C1B10CF18AEA952009FFA3D /* ClearStyle */ = {
+		0C1B10CF18AEA952009FFA3D /* stocklist */ = {
 			isa = PBXGroup;
 			children = (
+				0C37091B194752FC00280B7D /* stockOverlay */,
 				0C1B110618AEB6D0009FFA3D /* TableViewCellDelegate.h */,
 				0C1B10D818AEA952009FFA3D /* AppDelegate.h */,
 				0C1B10D918AEA952009FFA3D /* AppDelegate.m */,
@@ -143,6 +155,7 @@
 				0CE2BE5B18B7DC5100A808E1 /* TableView.m */,
 				0CE2BE5D18B7DCEA00A808E1 /* TableViewDataSource.h */,
 			);
+			name = stocklist;
 			path = ClearStyle;
 			sourceTree = "<group>";
 		};
@@ -157,12 +170,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0C1B10EE18AEA952009FFA3D /* ClearStyleTests */ = {
+		0C1B10EE18AEA952009FFA3D /* stocklistTests */ = {
 			isa = PBXGroup;
 			children = (
 				0C1B10F418AEA952009FFA3D /* ClearStyleTests.m */,
 				0C1B10EF18AEA952009FFA3D /* Supporting Files */,
 			);
+			name = stocklistTests;
 			path = ClearStyleTests;
 			sourceTree = "<group>";
 		};
@@ -173,6 +187,20 @@
 				0C1B10F118AEA952009FFA3D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0C37091B194752FC00280B7D /* stockOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				0C37091C1947532E00280B7D /* Theme.h */,
+				0C37091D1947532E00280B7D /* Theme.m */,
+				0C37091E1947532E00280B7D /* Stock.h */,
+				0C37091F1947532E00280B7D /* Stock.m */,
+				0C3709201947532E00280B7D /* StockDetailViewController.h */,
+				0C3709211947532E00280B7D /* StockDetailViewController.m */,
+				0C3709221947532E00280B7D /* StockDetailViewController.xib */,
+			);
+			name = stockOverlay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3709261947532E00280B7D /* StockDetailViewController.xib in Resources */,
 				0C1B10E218AEA952009FFA3D /* Images.xcassets in Resources */,
 				0C1B10D418AEA952009FFA3D /* InfoPlist.strings in Resources */,
 				0C1B10DD18AEA952009FFA3D /* Main.storyboard in Resources */,
@@ -272,11 +301,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3709231947532E00280B7D /* Theme.m in Sources */,
 				0C1B10E018AEA952009FFA3D /* ViewController.m in Sources */,
 				0C1B10DA18AEA952009FFA3D /* AppDelegate.m in Sources */,
 				0C1B110018AEAC6E009FFA3D /* ToDoItem.m in Sources */,
 				0CE2BE5C18B7DC5100A808E1 /* TableView.m in Sources */,
 				0C1B110318AEAEF6009FFA3D /* TableViewCell.m in Sources */,
+				0C3709241947532E00280B7D /* Stock.m in Sources */,
+				0C3709251947532E00280B7D /* StockDetailViewController.m in Sources */,
 				0C1B10D618AEA952009FFA3D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

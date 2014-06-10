@@ -32,47 +32,73 @@
         _gradientLayer.locations = @[@0.00f, @0.01f, @0.95f, @1.00f];
        //[self.layer insertSublayer:_gradientLayer atIndex:1];
         
+        //pan recogizer
         UIGestureRecognizer* recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
+        
+        //tap recogizer
+        
+        UITapGestureRecognizer *singleFingerTap =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+        //singleFingerTap.delegate = self;
+        [self addGestureRecognizer:singleFingerTap];
+        
+        
         //[self setBackgroundColor:[UIColor orangeColor]];
         NSLog(@"running cell init");
         //layout cell
         
+        //add background
+        self.bgView = [[UIView alloc]initWithFrame:CGRectMake(60, 0, self.frame.size.width-60, 60)];
+        [self.bgView setBackgroundColor:[UIColor whiteColor]];
+        [self.bgView setAlpha:1.0f];
+        [self addSubview:self.bgView];
+        
+        
+         
         //companyname
         self.companyName = [[UILabel alloc]initWithFrame:CGRectMake(7, 33, 200, 50)];
-        self.companyName.textColor = [UIColor whiteColor];
+        self.companyName.textColor = [UIColor blackColor];
         self.companyName.font = [UIFont systemFontOfSize:12];
         self.companyName.alpha = 0.0;
-        [self addSubview:self.companyName];
+        //[self addSubview:self.companyName];
+        
+        
         
         //companyShortName
         
-        self.companyShortName = [[UILabel alloc]initWithFrame:CGRectMake(7, 10, 200, 50)];
+        self.companyShortName = [[UILabel alloc]initWithFrame:CGRectMake(3, 4, 200, 50)];
         self.companyShortName.textColor = [UIColor whiteColor];
-        self.companyShortName.font = [UIFont systemFontOfSize:35];
-        self.companyShortName.alpha = 0.0;
+        self.companyShortName.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:19.0f];
+        self.companyShortName.alpha = 1.0;
         [self addSubview:self.companyShortName];
         
         //companyPrice
         
-        self.price = [[UILabel alloc]initWithFrame:CGRectMake(105, 10, 120, 50)];
-        self.price.textColor = [UIColor whiteColor];
-        self.price.font = [UIFont systemFontOfSize:28];
-        self.price.textAlignment = NSTextAlignmentRight;
+        self.price = [[UILabel alloc]initWithFrame:CGRectMake(68, 4, 120, 50)];
+        self.price.textColor = [UIColor colorWithRed:(27/255.0f) green:(27/255.0f) blue:(27/255.0f) alpha:1.0];
+        self.price.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:23.0f];
+        
+        //self.price.textAlignment = NSTextAlignmentLeft;
         self.price.alpha = 0.0;
         [self addSubview:self.price];
         
         //companyPriceChange
         
         self.priceChange = [[UILabel alloc]initWithFrame:CGRectMake(160, 10, 150, 50)];
-        self.priceChange.textColor = [UIColor whiteColor];
-        self.priceChange.font = [UIFont systemFontOfSize:28];
+        self.priceChange.textColor = [UIColor colorWithRed:(27/255.0f) green:(27/255.0f) blue:(27/255.0f) alpha:1.0];
+        self.priceChange.font = [UIFont systemFontOfSize:25];
         self.priceChange.textAlignment = NSTextAlignmentRight;
-        self.priceChange.alpha = 0;
+        self.priceChange.alpha = 1.0;
         [self addSubview:self.priceChange];
         
-        
+        //dividers
+        self.upperDividerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0.5)];
+        self.lowerDividerView =[[UIView alloc]initWithFrame:CGRectMake(0, 59.5, self.frame.size.width, 0.5)];
+        [self.upperDividerView setBackgroundColor:[UIColor colorWithRed:(40/255.0f) green:(40/255.0f) blue:(40/255.0f) alpha:0.3]];
+        [self.lowerDividerView setBackgroundColor:[UIColor colorWithRed:(40/255.0f) green:(40/255.0f) blue:(40/255.0f) alpha:0.3]];
+        [self addSubview:self.upperDividerView];
+        [self addSubview:self.lowerDividerView];
         NSLog(@"*****************FRAME HEIGHT: %f", self.bounds.size.height );
         
        
@@ -92,7 +118,7 @@
     // ensure the gradient layers occupies the full bounds
     _gradientLayer.frame = self.bounds;
     NSLog(@"---------------------------bounds %f", self.bounds.size.height);
-    if (self.bounds.size.height < 70) {
+    if (self.bounds.size.height < 60) {
         float fontsize = self.bounds.size.height * .4;
         float padding = (self.bounds.size.height - fontsize) / 2;
         
@@ -110,7 +136,7 @@
     }
  
         
-        if (self.frame.size.height > 69) {
+        if (self.frame.size.height > 59) {
             self.companyShortName.alpha = 1.0;
             self.companyName.alpha = 1.0;
             self.price.alpha = 1.0;
@@ -136,6 +162,11 @@
         return YES;
     }
     return NO;
+}
+
+-(void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    NSLog(@"TAPPED!");
+    [self.delegate showStock];
 }
 
 -(void)handlePan:(UIPanGestureRecognizer *)recognizer {

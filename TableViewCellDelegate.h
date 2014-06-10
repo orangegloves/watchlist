@@ -13,6 +13,7 @@
 
 // indicates that the given item has been deleted
 -(void) toDoItemDeleted:(ToDoItem*)todoItem;
+-(void) showStock;
 
 @end
 

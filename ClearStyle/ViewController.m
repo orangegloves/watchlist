@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ToDoItem.h"
 #import "TableViewCell.h"
+#import "StockDetailViewController.h"
 
 @interface ViewController ()
 
@@ -131,7 +132,20 @@
     //cell.backgroundColor = [self colorForIndex:indexPath.row];
     
 }
+-(void)showStock {
+    NSLog(@"showingStock!");
+    StockDetailViewController *viewController = [[StockDetailViewController alloc] init];
+ //   [self presentViewController:viewController animated:YES completion:nil];
+    
 
+    
+    [self addChildViewController:viewController];
+    [self.view addSubview:viewController.view];
+     viewController.view.frame = CGRectInset(self.view.bounds, 60,0);
+    [viewController didMoveToParentViewController:self];
+    
+    
+}
 -(void)toDoItemDeleted:(id)todoItem {
 //    
 //    float delay = 0.0;

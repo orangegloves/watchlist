@@ -36,7 +36,7 @@
         
         UIGestureRecognizer* recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
         [self addGestureRecognizer:recognizer];
-        SHC_ROW_HEIGHT = 90.0f;
+        SHC_ROW_HEIGHT = 60.0f;
         isScaling = NO;
         _isBig = YES;
     }
