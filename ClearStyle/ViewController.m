@@ -53,9 +53,9 @@
     self.tableView.backgroundColor = [UIColor blackColor];
     [self.tableView registerClassForCells:[TableViewCell class]];
     
-   // self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    // self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //self.tableView.backgroundColor = [UIColor blackColor];
-   // [self.tableView registerClass:[TableViewCell class] forCellReuseIdentifier:@"cell"];
+    // [self.tableView registerClass:[TableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,10 +71,10 @@
 }
 
 -(UITableViewCell *)cellForRow:(NSInteger)row {
-   // NSString *ident = @"cell";
+    // NSString *ident = @"cell";
     
     
-   // TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ident];
+    // TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ident];
     TableViewCell* cell = (TableViewCell*)[self.tableView dequeueReusableCell];
     
     ToDoItem *item = _toDoItems[row];
@@ -82,31 +82,31 @@
     cell.delegate = self;
     cell.backgroundColor = [UIColor yellowColor];
     NSLog(@"New Cell");
-   
-       float percentChange = (item.price -(item.price - item.priceChange))/(item.price - item.priceChange);
-        if (percentChange > 0.05) {
-            cell.backgroundColor = [UIColor colorWithRed: (60/255.0f) green:(126/255.0f) blue: (51/255.0f) alpha:1.0];
-        } else if(percentChange > 0.025) {
-            cell.backgroundColor = [UIColor colorWithRed: (86/255.0f) green:(179/255.0f) blue: (73/255.0f) alpha:1.0];
-        } else if (percentChange > 0.0 && percentChange < 0.025) {
-            cell.backgroundColor = [UIColor colorWithRed: 0.2 green:0.6 blue: 0.2 alpha:1.0];
-        } else if (percentChange == 0.0) {
-            cell.backgroundColor = [UIColor colorWithRed: 0.2 green:0.2 blue: 0.2 alpha:1.0];
-        } else if (percentChange < -0.05) {
-            cell.backgroundColor = [UIColor colorWithRed: (227/255.0f) green:(61/255.0f) blue: (67/255.0f) alpha:1.0];
-        } else if (percentChange < -0.025) {
-            cell.backgroundColor = [UIColor colorWithRed: 0.8 green:0.2 blue: 0.2 alpha:1.0];
-        } else {
-            cell.backgroundColor = [UIColor colorWithRed: 1.0 green:0.2 blue: 0.2 alpha:1.0];
-        }
     
-        cell.companyName.text = item.companyName;
-        cell.companyShortName.text = item.companyShortName;
-        cell.priceChange.text = [NSString stringWithFormat:@"%.02f", item.priceChange];
-        cell.price.text = [NSString stringWithFormat:@"%.02f", item.price];
-        //set the text
-        //cell.textLabel.text = item.companyName;
-
+    float percentChange = (item.price -(item.price - item.priceChange))/(item.price - item.priceChange);
+    if (percentChange > 0.05) {
+        cell.backgroundColor = [UIColor colorWithRed: (60/255.0f) green:(126/255.0f) blue: (51/255.0f) alpha:1.0];
+    } else if(percentChange > 0.025) {
+        cell.backgroundColor = [UIColor colorWithRed: (86/255.0f) green:(179/255.0f) blue: (73/255.0f) alpha:1.0];
+    } else if (percentChange > 0.0 && percentChange < 0.025) {
+        cell.backgroundColor = [UIColor colorWithRed: 0.2 green:0.6 blue: 0.2 alpha:1.0];
+    } else if (percentChange == 0.0) {
+        cell.backgroundColor = [UIColor colorWithRed: 0.2 green:0.2 blue: 0.2 alpha:1.0];
+    } else if (percentChange < -0.05) {
+        cell.backgroundColor = [UIColor colorWithRed: (227/255.0f) green:(61/255.0f) blue: (67/255.0f) alpha:1.0];
+    } else if (percentChange < -0.025) {
+        cell.backgroundColor = [UIColor colorWithRed: 0.8 green:0.2 blue: 0.2 alpha:1.0];
+    } else {
+        cell.backgroundColor = [UIColor colorWithRed: 1.0 green:0.2 blue: 0.2 alpha:1.0];
+    }
+    
+    cell.companyName.text = item.companyName;
+    cell.companyShortName.text = item.companyShortName;
+    cell.priceChange.text = [NSString stringWithFormat:@"%.02f", item.priceChange];
+    cell.price.text = [NSString stringWithFormat:@"%.02f", item.price];
+    //set the text
+    //cell.textLabel.text = item.companyName;
+    
     return cell;
 }
 
@@ -139,9 +139,9 @@
 -(void)showStock {
     NSLog(@"showingStock!");
     
- //   [self presentViewController:viewController animated:YES completion:nil];
+    //   [self presentViewController:viewController animated:YES completion:nil];
     
-
+    
     if(_isStockShowing) {
         
         
@@ -150,7 +150,7 @@
         [_stockViewController removeFromParentViewController];
         NSLog(@"removing controller");
     } else {
-    
+        
         [self.view addSubview:_stockViewController.view];
         _stockViewController.view.frame = CGRectInset(self.view.bounds, 60,0);
         [_stockViewController didMoveToParentViewController:self];
@@ -161,42 +161,42 @@
     
 }
 -(void)toDoItemDeleted:(id)todoItem {
-//    
-//    float delay = 0.0;
-//    //remove the model object
-//    
-//    [_toDoItems removeObject:todoItem];
-//    
-//    //find visible cells
-//    NSArray *visibleCells = [self.tableView visibleCells];
-//    UIView *lastView = [visibleCells lastObject];
-//    bool startAnimating = false;
-//    
-//    for (TableViewCell *cell in visibleCells) {
-//        if (startAnimating) {
-//            [UIView animateWithDuration:0.3
-//                                  delay:delay
-//                                options:UIViewAnimationOptionCurveEaseInOut
-//                             animations:^{
-//                                 cell.frame = CGRectOffset(cell.frame, 0.0f, -cell.frame.size.height);
-//                             }
-//                             completion:^(BOOL finished){
-//                                 if (cell == lastView) {
-//                                     [self.tableView reloadData];
-//                                 }
-//                             }];
-//            delay+=0.03;
-//        }
-//        
-//        // if you have reached the item that was deleted, start animating
-//        if (cell.todoItem == todoItem) {
-//            startAnimating = true;
-//            cell.hidden = YES;
-//        }
-//    }
-
+    //
+    //    float delay = 0.0;
+    //    //remove the model object
+    //
+    //    [_toDoItems removeObject:todoItem];
+    //
+    //    //find visible cells
+    //    NSArray *visibleCells = [self.tableView visibleCells];
+    //    UIView *lastView = [visibleCells lastObject];
+    //    bool startAnimating = false;
+    //
+    //    for (TableViewCell *cell in visibleCells) {
+    //        if (startAnimating) {
+    //            [UIView animateWithDuration:0.3
+    //                                  delay:delay
+    //                                options:UIViewAnimationOptionCurveEaseInOut
+    //                             animations:^{
+    //                                 cell.frame = CGRectOffset(cell.frame, 0.0f, -cell.frame.size.height);
+    //                             }
+    //                             completion:^(BOOL finished){
+    //                                 if (cell == lastView) {
+    //                                     [self.tableView reloadData];
+    //                                 }
+    //                             }];
+    //            delay+=0.03;
+    //        }
+    //
+    //        // if you have reached the item that was deleted, start animating
+    //        if (cell.todoItem == todoItem) {
+    //            startAnimating = true;
+    //            cell.hidden = YES;
+    //        }
+    //    }
+    
     // use the UITableView to animate the removal of this row
-   // NSUInteger index = [_toDoItems indexOfObject:todoItem];
+    // NSUInteger index = [_toDoItems indexOfObject:todoItem];
     //[self.tableView beginUpdates];
     //[_toDoItems removeObject:todoItem];
     //[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
