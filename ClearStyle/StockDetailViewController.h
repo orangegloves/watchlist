@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Stock.h"
 
 @interface StockDetailViewController : UIViewController
 
 - (id)initWithSymbol:(NSString *)symbol;
+- (id)initWithStock:(Stock *)stockData;
 
 @end

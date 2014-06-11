@@ -35,4 +35,6 @@
 
 - (id)initWithSymbol:(NSString *)symbol;
 
++ (NSMutableArray*)arrayForStockSymbols:(NSArray*)symbols;
+
 @end
