@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>59544842-5C24-41A8-A101-88C6060D4E07</string>
+	<string>087B176E-D12A-4336-A058-0D3DB9A52463</string>
 	<key>IDESourceControlProjectName</key>
 	<string>StockList3000</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>AB6A9CD0-690E-457F-9EAF-9FAC94A1079A</key>
-		<string>ssh://github.com/orangegloves/watchlist</string>
+		<key>1B30FD3D-464D-4C15-800D-8523CDF543E4</key>
+		<string>https://github.com/orangegloves/watchlist.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>StockList3000.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AB6A9CD0-690E-457F-9EAF-9FAC94A1079A</key>
+		<key>1B30FD3D-464D-4C15-800D-8523CDF543E4</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/orangegloves/watchlist</string>
+	<string>https://github.com/orangegloves/watchlist.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AB6A9CD0-690E-457F-9EAF-9FAC94A1079A</string>
+	<string>1B30FD3D-464D-4C15-800D-8523CDF543E4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AB6A9CD0-690E-457F-9EAF-9FAC94A1079A</string>
+			<string>1B30FD3D-464D-4C15-800D-8523CDF543E4</string>
 			<key>IDESourceControlWCCName</key>
-			<string>watchlist-master</string>
+			<string>watchlist</string>
 		</dict>
 	</array>
 </dict>
