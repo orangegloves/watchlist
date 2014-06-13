@@ -7,7 +7,6 @@
 //
 
 #import "StockDetailViewController.h"
-#import "Stock.h"
 #import "Theme.h"
 
 @interface StockDetailViewController ()
@@ -40,6 +39,13 @@
 - (id)initWithSymbol:(NSString *)symbol {
     self = [[StockDetailViewController alloc] init];
     self.stockData = [[Stock alloc] initWithSymbol:symbol];
+    
+    return self;
+}
+
+- (id)initWithStock:(Stock *)stockData {
+    self = [[StockDetailViewController alloc] init];
+    self.stockData = stockData;
     
     return self;
 }

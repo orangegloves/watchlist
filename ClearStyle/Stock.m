@@ -153,4 +153,78 @@ NSString *element;
     }
 }
 
+
++ (NSMutableArray*)arrayForStockSymbols:(NSArray*)symbols {
+    NSMutableArray *stocks = [[NSMutableArray alloc] init];
+    NSMutableString *financeUrl = [[NSMutableString alloc] init];
+    [financeUrl appendString:@"https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20("];
+    for (int i = 0; i < [symbols count]; i++) {
+        if (i > 0) {
+            [financeUrl appendString:@"%2C"];
+        }
+        [financeUrl appendString:@"%22"];
+        [financeUrl appendString:[symbols objectAtIndex:i]];
+        [financeUrl appendString:@"%22"];
+    }
+    [financeUrl appendString:@")&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="];
+    
+    NSData *financeData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithString:financeUrl]]];
+    NSError *error;
+    NSMutableDictionary *json = [NSJSONSerialization
+                                 JSONObjectWithData:financeData
+                                 options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
+                                 error:&error];
+    
+    if( error ) {
+        NSLog(@"%@", [error localizedDescription]);
+    } else {
+        NSArray *query = json[@"query"];
+        NSInteger numberOfStocks = [[json[@"query"] objectForKey:@"count"] intValue];
+        
+        for (int counter = 0; counter < numberOfStocks; counter++) {
+            Stock *stockData = [[Stock alloc] init];
+            
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"MarketCapitalization"] isKindOfClass:[NSString class]]) {
+                stockData.stockMktCap = [[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"MarketCapitalization"];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"PERatio"] isKindOfClass:[NSString class]]) {
+                stockData.stockPeratio = [[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"PERatio"];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"LastTradePriceOnly"] isKindOfClass:[NSString class]]) {
+                stockData.stockPrice = [[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"LastTradePriceOnly"] floatValue];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"Change"] isKindOfClass:[NSString class]]) {
+                stockData.stockChange = [[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"Change"] floatValue];
+            }
+            stockData.stockChangePercent = (stockData.stockChange / stockData.stockPrice) * 100.0;
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"Open"] isKindOfClass:[NSString class]]) {
+                stockData.stockDayOpen = [[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"Open"] floatValue];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"DaysLow"] isKindOfClass:[NSString class]]) {
+                stockData.stockDayLow = [[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"DaysLow"] floatValue];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"DaysHigh"] isKindOfClass:[NSString class]]) {
+                stockData.stockDayHigh = [[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"DaysHigh"] floatValue];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"Name"] isKindOfClass:[NSString class]]) {
+                stockData.stockName = [[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"Name"];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"Symbol"] isKindOfClass:[NSString class]]) {
+                stockData.stockSymbol = [[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"Symbol"];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"StockExchange"] isKindOfClass:[NSString class]]) {
+                stockData.stockExchange = [[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"StockExchange"];
+            }
+            if ([[[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"DividendYield"] isKindOfClass:[NSString class]]) {
+                stockData.stockDivYield = [[query valueForKeyPath:@"results.quote"][counter] objectForKey:@"DividendYield"];
+            }
+            
+            [stocks addObject:stockData];
+        }
+    }
+    
+    return stocks;
+}
+
+
 @end
