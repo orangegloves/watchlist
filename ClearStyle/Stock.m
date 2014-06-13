@@ -27,6 +27,8 @@ NSString *element;
 - (id)initWithSymbol:(NSString *)symbol {
     self = [[Stock alloc] init];
     
+    self.stockSymbol = symbol;
+    
     [self loadData];
     [self loadChart];
     [self loadNews];

@@ -28,7 +28,6 @@
 		0C3709241947532E00280B7D /* Stock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C37091F1947532E00280B7D /* Stock.m */; };
 		0C3709251947532E00280B7D /* StockDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3709211947532E00280B7D /* StockDetailViewController.m */; };
 		0C3709261947532E00280B7D /* StockDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3709221947532E00280B7D /* StockDetailViewController.xib */; };
-		0C6A5412194B73CC00EE6A2C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6A5411194B73CC00EE6A2C /* Parse.framework */; };
 		0C6A5414194B73EE00EE6A2C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6A5413194B73EE00EE6A2C /* AudioToolbox.framework */; };
 		0C6A5416194B73FE00EE6A2C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6A5415194B73FE00EE6A2C /* CFNetwork.framework */; };
 		0C6A5418194B740C00EE6A2C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6A5417194B740C00EE6A2C /* CoreLocation.framework */; };
@@ -43,6 +42,7 @@
 		0CE2BE5C18B7DC5100A808E1 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2BE5B18B7DC5100A808E1 /* TableView.m */; };
 		F5C9BCD31947A5B100128536 /* btn_chatter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C9BCD11947A5B100128536 /* btn_chatter.png */; };
 		F5C9BCD41947A5B100128536 /* btn_chatter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C9BCD21947A5B100128536 /* btn_chatter@2x.png */; };
+		F5CDFD16194B94CC00AA7376 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CDFD15194B94CC00AA7376 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,6 @@
 		0C3709201947532E00280B7D /* StockDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockDetailViewController.h; sourceTree = "<group>"; };
 		0C3709211947532E00280B7D /* StockDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockDetailViewController.m; sourceTree = "<group>"; };
 		0C3709221947532E00280B7D /* StockDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockDetailViewController.xib; sourceTree = "<group>"; };
-		0C6A5411194B73CC00EE6A2C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0C6A5413194B73EE00EE6A2C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0C6A5415194B73FE00EE6A2C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0C6A5417194B740C00EE6A2C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -105,6 +104,7 @@
 		0CE2BE5D18B7DCEA00A808E1 /* TableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewDataSource.h; sourceTree = "<group>"; };
 		F5C9BCD11947A5B100128536 /* btn_chatter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_chatter.png; sourceTree = "<group>"; };
 		F5C9BCD21947A5B100128536 /* btn_chatter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_chatter@2x.png"; sourceTree = "<group>"; };
+		F5CDFD15194B94CC00AA7376 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +118,7 @@
 				0C6A5420194B743A00EE6A2C /* StoreKit.framework in Frameworks */,
 				0C6A541E194B743100EE6A2C /* Security.framework in Frameworks */,
 				0C6A541C194B742600EE6A2C /* MobileCoreServices.framework in Frameworks */,
+				F5CDFD16194B94CC00AA7376 /* Parse.framework in Frameworks */,
 				0C6A541A194B741A00EE6A2C /* libz.dylib in Frameworks */,
 				0C6A5418194B740C00EE6A2C /* CoreLocation.framework in Frameworks */,
 				0C6A5416194B73FE00EE6A2C /* CFNetwork.framework in Frameworks */,
@@ -126,7 +127,6 @@
 				0C1B10CC18AEA952009FFA3D /* CoreGraphics.framework in Frameworks */,
 				0C1B10CE18AEA952009FFA3D /* UIKit.framework in Frameworks */,
 				0C1B10CA18AEA952009FFA3D /* Foundation.framework in Frameworks */,
-				0C6A5412194B73CC00EE6A2C /* Parse.framework in Frameworks */,
 				0C6A5424194B792300EE6A2C /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +166,7 @@
 		0C1B10C818AEA952009FFA3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5CDFD15194B94CC00AA7376 /* Parse.framework */,
 				0C6A5427194B799F00EE6A2C /* Social.framework */,
 				0C6A5425194B798B00EE6A2C /* Accounts.framework */,
 				0C6A5423194B792300EE6A2C /* FacebookSDK.framework */,
@@ -177,7 +178,6 @@
 				0C6A5417194B740C00EE6A2C /* CoreLocation.framework */,
 				0C6A5415194B73FE00EE6A2C /* CFNetwork.framework */,
 				0C6A5413194B73EE00EE6A2C /* AudioToolbox.framework */,
-				0C6A5411194B73CC00EE6A2C /* Parse.framework */,
 				0C1B110418AEAF9F009FFA3D /* QuartzCore.framework */,
 				0C1B10C918AEA952009FFA3D /* Foundation.framework */,
 				0C1B10CB18AEA952009FFA3D /* CoreGraphics.framework */,
@@ -503,6 +503,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mstorm/watchListNew/watchlist,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ClearStyle/StockList3000-Prefix.pch";
@@ -520,6 +521,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mstorm/watchListNew/watchlist,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ClearStyle/StockList3000-Prefix.pch";
