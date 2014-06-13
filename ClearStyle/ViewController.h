@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TableViewCellDelegate.h"
 #import "TableView.h"
+#import <Parse/Parse.h>
 
-@interface ViewController : UIViewController <TableViewCellDelegate, TableViewDataSource>
+@interface ViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,TableViewCellDelegate, TableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet TableView *tableView;
 
