@@ -34,6 +34,9 @@
 @property NSArray *newsStories;
 
 - (id)initWithSymbol:(NSString *)symbol;
+- (void)loadData;
+- (void)loadChart;
+- (void)loadNews;
 
 + (NSMutableArray*)arrayForStockSymbols:(NSArray*)symbols;
 

@@ -27,15 +27,27 @@ NSString *element;
 - (id)initWithSymbol:(NSString *)symbol {
     self = [[Stock alloc] init];
     
-    [self loadDataFromYahooFinanceForStockSymbol:symbol];
-    [self loadChartFromYahooFinanceForStockSymbol:symbol];
-    [self loadNewsFromYahooFinanceForStockSymbol:symbol];
-    [self loadUser:nil forStockSymbol:symbol];
+    [self loadData];
+    [self loadChart];
+    [self loadNews];
+    [self loadUser:nil];
     
     return self;
 }
 
-- (void)loadUser:(NSObject *)user forStockSymbol:(NSString *)symbol {
+- (void)loadData {
+    [self loadDataFromYahooFinance];
+}
+
+- (void)loadChart {
+    [self loadChartFromYahooFinance];
+}
+
+- (void)loadNews {
+    [self loadNewsFromYahooFinance];
+}
+
+- (void)loadUser:(NSObject *)user {
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setDay:10];
     [comps setMonth:10];
@@ -51,10 +63,10 @@ NSString *element;
     self.userGainLoss = self.userValue - userPurchaseValue;
 }
 
-- (void)loadDataFromYahooFinanceForStockSymbol:(NSString*)symbol {
+- (void)loadDataFromYahooFinance {
     NSMutableString *financeUrl = [[NSMutableString alloc] init];
     [financeUrl appendString:@"https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22"];
-    [financeUrl appendString:symbol];
+    [financeUrl appendString:self.stockSymbol];
     [financeUrl appendString:@"%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="];
     
     NSData *financeData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[NSString stringWithString:financeUrl]]];
@@ -90,10 +102,10 @@ NSString *element;
     
 }
 
-- (void)loadChartFromYahooFinanceForStockSymbol:(NSString*)symbol {
+- (void)loadChartFromYahooFinance {
     NSMutableString *chartURL = [[NSMutableString alloc] init];
     [chartURL appendString:@"http://chart.finance.yahoo.com/z?s="];
-    [chartURL appendString:symbol];
+    [chartURL appendString:self.stockSymbol];
     [chartURL appendString:@"&t=1d&q=l&l=on&z=s"];
     NSURL *chartImageURL = [NSURL URLWithString:[NSString stringWithString:chartURL]];
     self.chartImageView = [[UIImageView alloc] init];
@@ -101,12 +113,12 @@ NSString *element;
     self.chartImageView.frame = CGRectMake(5, 0, 250, 105);
 }
 
-- (void)loadNewsFromYahooFinanceForStockSymbol:(NSString*)symbol {
+- (void)loadNewsFromYahooFinance {
     feeds = [[NSMutableArray alloc] init];
     
     NSMutableString *newsURL = [[NSMutableString alloc] init];
     [newsURL appendString:@"http://feeds.finance.yahoo.com/rss/2.0/headline?s="];
-    [newsURL appendString:symbol];
+    [newsURL appendString:self.stockSymbol];
     [newsURL appendString:@"&region=US&lang=en-US"];
 
     NSURL *rssURL =[NSURL URLWithString:[NSString stringWithString:newsURL]];
