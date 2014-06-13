@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
 	// create a dummy to-do list
-    _stockViewController = [[StockDetailViewController alloc] init];
+    _stockViewController = [[StockDetailViewController alloc] initWithSymbol:@"INTU"];
     _toDoItems = [[NSMutableArray alloc] init];
     
     [_toDoItems addObject:[ToDoItem toDoItemWithCompanyName:@"Intuit" andShortName:@"INTU" andPrice:69.89f andPriceChange:+0.70f]];
