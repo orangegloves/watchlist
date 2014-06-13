@@ -10,6 +10,8 @@
 #import "ToDoItem.h"
 #import "TableViewCell.h"
 #import "StockDetailViewController.h"
+#import <Parse/Parse.h>
+
 
 @interface ViewController ()
 
@@ -22,11 +24,54 @@
     StockDetailViewController* _stockViewController;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    if (![PFUser currentUser]) { // No user logged in
+        // Create the log in view controller
+        NSLog(@"No User Logged In");
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Create the sign up view controller
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    }
+}
+
+- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+    // Check if both fields are completed
+    if (username && password && username.length != 0 && password.length != 0) {
+        return YES; // Begin login process
+    }
+    
+    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
+                                message:@"Make sure you fill out all of the information!"
+                               delegate:nil
+                      cancelButtonTitle:@"ok"
+                      otherButtonTitles:nil] show];
+    return NO; // Interrupt login process
+}
+
+// Sent to the delegate when a PFUser is logged in.
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// create a dummy to-do list
-    _stockViewController = [[StockDetailViewController alloc] init];
+    
+
+    
+    
+    _stockViewController = [[StockDetailViewController alloc] initWithSymbol:@"INTU"];
     _toDoItems = [[NSMutableArray alloc] init];
     
     [_toDoItems addObject:[ToDoItem toDoItemWithCompanyName:@"Intuit" andShortName:@"INTU" andPrice:69.89f andPriceChange:+0.70f]];
